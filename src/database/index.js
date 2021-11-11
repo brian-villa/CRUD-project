@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 function connect() {
 
-    mongoose.connect('mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false') //estabelecendo conexão com o banco de dados
+    mongoose.connect('mongodb://localhost:27017/first-project?readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false') //estabelecendo conexão com o banco de dados
     
     const db = mongoose.connection
     
