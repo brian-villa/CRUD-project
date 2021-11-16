@@ -35,12 +35,49 @@ async function add(req, res) {
 
 }
 
-async function listUsers(req, res) {
+async function list(req, res) {
    const users = await CustomersModel.find() // find vazio chama todos os users do banco de dados
 
-    res.render('listUsers', {
+    res.render('list', {
         title: 'Listagem de Usuários',
         users,
+    })
+}
+
+async function formEdit(req, res) {
+
+    const { id } = req.query
+
+    const user = await CustomersModel.findById(id)
+
+    res.render('edit', {
+        title: 'Editar Usuário',
+        user,
+    })
+}
+
+async function edit(req,res) {
+    
+    const {
+        name,
+        age,
+        email,
+    } = req.body
+
+    const { id } = req.params
+
+    const user = await CustomersModel.findById(id)
+
+    user.name = name
+    user.age = age
+    user.email = email
+
+    user.save()
+
+    res.render('edit', {
+        title: 'Editar Usuário',
+        user,
+        message: 'Usuário alterado com sucesso!'
     })
 }
 
@@ -48,5 +85,7 @@ async function listUsers(req, res) {
 module.exports = {
     add,
     index,
-    listUsers,
+    list,
+    formEdit,
+    edit,
 }

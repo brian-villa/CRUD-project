@@ -13,7 +13,11 @@ router.post('/register/add', CustomersController.add) // CONTROLLER
 
 
 //listar usuarios
-router.get('/list', CustomersController.listUsers)
+router.get('/list', CustomersController.list)
+
+//editar usuarios
+router.get('/edit', CustomersController.formEdit)
+router.post('/edit/:id', CustomersController.edit)
 
 
 
